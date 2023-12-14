@@ -1,0 +1,144 @@
+
+.navbar{
+    background-color: #f3f3f3;
+}
+.navrow {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.logo img {
+    width: 100px;
+
+}
+
+.location-search {
+    border: 2px solid #000;
+    width: 250px;
+    min-height: 40px;
+    max-height: 40px;
+    border-radius: 3px;
+    padding: 9px 0;
+    outline: #00ddff;
+    overflow: hidden;
+    background-color: #fff;
+
+}
+
+.location-search i {
+    scale: 1.5;
+    margin: 2px 11px;
+}
+
+.location-search input {
+    border: none;
+    outline: none;
+}
+
+.location-search ::placeholder {
+    font-size: 14px;
+    text-align: center;
+}
+
+.item-search {
+    border: 2px solid #000;
+    width: 500px;
+    height: 40px;
+    border-radius: 3px;
+    overflow: hidden;
+    outline: #00ddff;
+    padding-left: 20px;
+    background-color: #fff;
+}
+
+.item-search input {
+    border: none;
+    outline: none;
+    width: 92%;
+}
+
+.item-search i {
+    background-color: #012f35;
+    scale: 1.6;
+    padding: 7px;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+
+.drop-language {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+.drop-language h2{
+    font-size: 20px;
+}
+.drop-language-list {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;  
+}
+
+.drop-language-list p {
+    /* border: 1px solid rgb(0, 0, 0); */
+    padding: 5px;
+    padding-left: 10px;
+    margin-top: 10px;
+    transition: .3s ease-in-out;
+    font-size: 14px;
+}
+
+.drop-language-list p:hover {
+    background-color: #012f35;
+    color: #fff;
+}
+
+.drop-language-list i {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.drop-language:hover .drop-language-list {
+    display: block;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+li {
+    float: left;
+    margin-left: 2rem;
+}
+
+.language i {
+    margin-left: 20px;
+}
+.login-logout h2{
+    font-size: 20px;
+}
+.become-seller{
+    margin-right: 2rem;
+   
+}
+.become-seller h2{
+    font-size: 20px;
+    border: 6px solid #012f35;
+    border-radius: 20px;
+    padding: 4px 10px;
+    box-shadow:2px 2px 25px #012f35;
+    
+}
+.become-seller i{
+    margin-right: 5px;
+    font-size: 18px;
+}
