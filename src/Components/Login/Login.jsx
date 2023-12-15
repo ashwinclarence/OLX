@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
 import register_logo from "./olx img.png"
-
+import {Link} from 'react-router-dom'
 
 function Login() {
     const [username,setUsername]=useState('')
@@ -24,6 +24,9 @@ function Login() {
         placeholder='Password' 
         required/>
         <button className='btn-login'>Login</button>
+        
+        <h5>New User? <Link to='/login'>Register </Link></h5>
+       
       </form>
 
       </div>

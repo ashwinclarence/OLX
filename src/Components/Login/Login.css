@@ -50,3 +50,6 @@
 .login-form-box button:hover{
     scale: 1.05;
 }
+.login-form-box h5{
+    margin-top: 2rem;
+}

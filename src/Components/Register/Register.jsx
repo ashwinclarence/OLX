@@ -1,18 +1,42 @@
 import React, { useState } from 'react'
 import './Register.css'
 import register_logo from "./olx img.png"
-
+import {Link} from "react-router-dom"
+import {createUserWithEmailAndPassword,sendEmailVerification} from 'firebase/auth'
+import {auth} from '../../firebase/config'
 
 function Register() {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [password, Setpassword] = useState('')
+
+    // function to sign-in
+    const signIn=async(e)=>{
+        e.preventDefault();
+       try {
+        await createUserWithEmailAndPassword(auth,email,password).then((result)=>{
+            console.log(result);
+        })
+        await sendEmailVerification(auth.currentUser)
+        setName('')
+        setPhone('')
+        setEmail('')
+        Setpassword('')
+        alert("registeration Successful")
+       } catch (error) {
+        console.log(error);
+        alert(error)
+       }
+    }
+    
+
+    console.log(auth?.currentUser)
     return (
         <div className='Registeration-page'>
             <div className="register-box">
                 <form action="">
-                <img src={register_logo} alt="" />
+                    <img src={register_logo} alt="" />
                     <input
                         type="text"
                         placeholder='Full Name'
@@ -39,11 +63,10 @@ function Register() {
                         value={password}
                         onChange={(e) => Setpassword(e.target.value)}
                         required />
-                    <button className='btn-register'>Register</button>
+                    <button className='btn-register' onClick={signIn}>Register</button>                  
+                    <h5>already have an account?  <Link to='/login'>Login</Link> </h5>
                 </form>
-
             </div>
-
         </div>
     )
 }
