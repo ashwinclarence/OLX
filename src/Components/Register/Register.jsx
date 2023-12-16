@@ -65,6 +65,7 @@ function Register() {
                         required />
                     <button className='btn-register' onClick={signIn}>Register</button>                  
                     <h5>already have an account?  <Link to='/login'>Login</Link> </h5>
+                    <h6><Link to='/' className='go-back'>Back to Home</Link></h6>
                 </form>
             </div>
         </div>

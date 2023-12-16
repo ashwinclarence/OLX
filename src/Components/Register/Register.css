@@ -2,6 +2,7 @@
     width: 100%;
     margin: auto;
     padding-top: 5rem;
+    height: 100vh;
 }
 
 .register-box {
@@ -56,4 +57,7 @@
 
 .register-box h5{
     margin-top: 2rem;
+}
+.register-box h6{
+    margin-top: 1rem;
 }

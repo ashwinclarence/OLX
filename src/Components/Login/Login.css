@@ -2,7 +2,9 @@
     width: 100%;
     margin: auto;
     padding-top: 5rem;
+    height: 100vh;
 }
+
 .login-form-box{
     width: 500px;
     display: block;
@@ -52,4 +54,11 @@
 }
 .login-form-box h5{
     margin-top: 2rem;
+}
+.login-form-box h6{
+    margin-top: 1rem;
+}
+.go-back{
+    text-decoration: none;
+    color: #000;
 }

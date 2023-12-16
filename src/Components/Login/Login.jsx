@@ -25,7 +25,8 @@ function Login() {
         required/>
         <button className='btn-login'>Login</button>
         
-        <h5>New User? <Link to='/login'>Register </Link></h5>
+        <h5>New User? <Link to='/signup' className='navigate'> &nbsp;Register Here</Link></h5>
+        <h6><Link to='/' className='go-back'>Back to Home</Link></h6>
        
       </form>
 

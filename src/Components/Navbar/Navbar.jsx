@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from './logo.png'
 import './Navbar.css'
+import { Link } from 'react-router-dom'
 
 
 function Navbar() {
@@ -36,7 +37,7 @@ function Navbar() {
           </li>
           <li>   
               <div className="login-logout">
-                <h2 className='login-action-box'>Login</h2>
+                <h2 className='login-action-box'><Link to='/login' className='login-action'>Login</Link></h2>
               </div>
           </li>
           <li>
