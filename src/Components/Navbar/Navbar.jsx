@@ -2,9 +2,22 @@ import React from 'react'
 import logo from './logo.png'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
-
+import { auth } from '../../firebase/config'
+import { signOut } from 'firebase/auth'
 
 function Navbar() {
+
+  const logout=async(e)=>{
+    e.preventDefault()
+    try {
+      await signOut(auth).then(()=>{
+        console.log('the user signed out');
+      })
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     <div className='navbar'>
       <div className="navrow">
@@ -37,7 +50,8 @@ function Navbar() {
           </li>
           <li>   
               <div className="login-logout">
-                <h2 className='login-action-box'><Link to='/login' className='login-action'>Login</Link></h2>
+                <h2 className='login-action-box'><Link to='/login' className='login'>Login</Link></h2>
+                <h2 className='login-action-box logout' onClick={logout}>Logout</h2>
               </div>
           </li>
           <li>

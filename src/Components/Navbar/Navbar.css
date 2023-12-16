@@ -132,7 +132,11 @@ li {
     text-decoration: none;
     color: red;
 }
-.login-action{
+.login{
+    text-decoration: none;
+    color: #012f35;
+}
+.logout{
     text-decoration: none;
     color: #012f35;
 }

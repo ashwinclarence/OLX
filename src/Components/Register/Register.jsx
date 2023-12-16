@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './Register.css'
 import register_logo from "./olx img.png"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import {createUserWithEmailAndPassword,sendEmailVerification} from 'firebase/auth'
 import {auth} from '../../firebase/config'
 
 function Register() {
+    const navigate=useNavigate();
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
@@ -15,23 +16,31 @@ function Register() {
     const signIn=async(e)=>{
         e.preventDefault();
        try {
-        await createUserWithEmailAndPassword(auth,email,password).then((result)=>{
-            console.log(result);
+        await createUserWithEmailAndPassword(auth,email,password).then((cred)=>{
+            console.log("user created",cred.user);
+            wipeOutData()
+        }).then(()=>{
+            
+            navigate('/')
+
         })
         await sendEmailVerification(auth.currentUser)
+        
+        alert("registeration Successful")
+       } catch (error) {
+        console.log(error.message);
+        wipeOutData()
+        // alert(error.message)
+       }
+    }
+    const wipeOutData=()=>{
         setName('')
         setPhone('')
         setEmail('')
         Setpassword('')
-        alert("registeration Successful")
-       } catch (error) {
-        console.log(error);
-        alert(error)
-       }
     }
-    
 
-    console.log(auth?.currentUser)
+    // console.log(auth?.currentUser)
     return (
         <div className='Registeration-page'>
             <div className="register-box">
