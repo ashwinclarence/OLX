@@ -1,0 +1,56 @@
+.posts {
+    background-color: transparent;
+    padding: 20px;
+}
+
+.post-box {
+    float: left;
+    width: 250px;
+    overflow: hidden;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin: 10px;
+    max-height: 300px;
+}
+
+.post-box .fa-heart {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+.post-box img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0;
+    height: 150px;
+}
+
+.post-content {
+    height: 150px;
+    padding-top: 10px;
+    padding-right: 15px;
+}
+
+.post-content ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.product-name {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.product-price {
+    font-size:18px;
+    font-weight: 800;
+
+}
+
+.product-description {
+    font-size: 11px;
+    text-align: justify;
+    text-justify: inter-word;
+}

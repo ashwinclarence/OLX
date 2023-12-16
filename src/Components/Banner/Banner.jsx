@@ -1,6 +1,6 @@
 import React from 'react'
-import banner from './bannerOLX.jpg'
-
+import banner from './Olx banner.png'
+import './Banner.css'
 function Banner() {
   return (
     <div className='banner'>
