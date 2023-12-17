@@ -54,6 +54,7 @@
 }
 .profile-box .update-password{
     width: 250px;
+    text-decoration: none;
 }
 .profile-box button{
     display: block;

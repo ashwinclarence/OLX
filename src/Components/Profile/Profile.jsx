@@ -3,6 +3,7 @@ import './Profile.css'
 import profileImage from "./profile.png"
 import {auth} from '../../firebase/config'
 import { onAuthStateChanged } from 'firebase/auth'
+import { Link } from 'react-router-dom'
 
 
 
@@ -44,8 +45,10 @@ function Profile() {
                 value={email!=null?email:"error loading email"}
                 disabled />
                 <button className='update-password'>Update Phone Number</button>
-                <button className='update-password'>Update password</button>
+                <Link to='/update-password' className='update-password'><button className='update-password' >Update password</button></Link>
                 <button className='update-password'>Delete Account</button>
+                <h6><Link to='/' className='go-back'>Back to Home</Link></h6>
+
             </form>
         </div>
       
