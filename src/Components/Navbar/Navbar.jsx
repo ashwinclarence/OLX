@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from './logo.png'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase/config'
-import { signOut } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 import userimage from './profile.jpg'
 function Navbar() {
-
+  const[userStatus,setUserStatus]=useState(false)
+  const[username,SetUsername]=useState('')
   const logout=async(e)=>{
     e.preventDefault()
     try {
@@ -17,6 +18,14 @@ function Navbar() {
       console.log(error.message);
     }
   }
+  onAuthStateChanged(auth,(user)=>{
+    if(user!==null){
+      SetUsername(user.displayName)
+      setUserStatus(true)
+    }else{
+      setUserStatus(false)
+    }
+  })
 
   return (
     <div className='navbar'>
@@ -54,6 +63,7 @@ function Navbar() {
                 <img src={userimage} alt="" className='userimg'/>
                 <div className="drop-profile-nav-list">
                  <p className='imageholder'><img src={userimage} alt="" className='userimg-inside'/></p>
+              <p >{userStatus?username:"User"}</p>
                <Link to='/profile' className='view-profile-nav'> <p >View Profile</p></Link> 
                <Link to='/profile' className='view-profile-nav'> <p>Verify email</p></Link> 
                <Link to='/profile' className='view-profile-nav'> <p>Change Password</p></Link> 

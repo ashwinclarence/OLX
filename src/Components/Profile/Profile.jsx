@@ -1,41 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Profile.css'
 import profileImage from "./profile.png"
-import {signOut} from 'firebase/auth'
 import {auth} from '../../firebase/config'
-function Profile() {
+import { onAuthStateChanged } from 'firebase/auth'
 
-    //function to signout
-    const signout=async(e)=>{
-        try{
-            await signOut(auth)
-        }catch(error){
-            console.log(error);
-            alert(error)
-        }
-    }
+
+
+function Profile() {
+    const[username,SetUsername]=useState('')
+    const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('')
+    const[emailVerify,setEmailVerify]=useState(false)
+
+    onAuthStateChanged(auth,(user)=>{
+          SetUsername(user.displayName)
+          setPhone(user.phoneNumber)
+          setEmail(user.email)
+          if(user.emailVerified){
+            setEmailVerify(true)
+          }else{
+            setEmailVerify(false)
+          }
+      })
+   
   return (
     <div className='profile'>
         <div className="profile-box">
             <form action="">
                 <img src={profileImage} alt="" />
+                <label htmlFor="">Full Name</label>
                 <input 
                 type="text"
-                value={null}
-                placeholder='ASHWIN'
+                value={username!=null?username:"error loading username"}
                 disabled />
+                <label htmlFor="">{phone!=null?<span style={{color:'#000'}}>Phone Number</span>:<span style={{color:'#FF0000'}}>Phone Number</span>}</label>
                 <input 
                 type="tel"
-                value={null}
-                placeholder='8590120463'
+                value={phone!=null?phone:"update Phone number"}
                 disabled />
+                <label htmlFor="">Email {emailVerify?<i class="fa-solid fa-circle-check" title='verified email'></i>:<i class="fa-solid fa-circle-xmark" title='Email not verfied'></i>} </label>
                 <input 
                 type="text"
-                value={null}
-                placeholder='meashwinclarence@gmail.com'
+                value={email!=null?email:"error loading email"}
                 disabled />
+                <button className='update-password'>Update Phone Number</button>
                 <button className='update-password'>Update password</button>
-                <button onClick={signout}>Sign Out</button>
+                <button className='update-password'>Delete Account</button>
             </form>
         </div>
       
