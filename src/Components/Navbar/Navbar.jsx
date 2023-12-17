@@ -4,14 +4,14 @@ import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase/config'
 import { signOut } from 'firebase/auth'
-
+import userimage from './profile.jpg'
 function Navbar() {
 
   const logout=async(e)=>{
     e.preventDefault()
     try {
       await signOut(auth).then(()=>{
-        console.log('the user signed out');
+        console.log('signed out');
       })
     } catch (error) {
       console.log(error.message);
@@ -49,12 +49,18 @@ function Navbar() {
             </div>
           </li>
           <li>   
-          <div className="action-box">
-              <div className="action">
-                <h2 className='language'><i class="fa-solid fa-caret-down"></i></h2>
-                <div className="drop-language-list">
-                 <p className='active-language'>English<i class="fa-solid fa-check"></i></p>
-                 <p>Hindi</p>
+          <div className="profile-nav-box">
+              <div className="drop-profile-nav">
+                <img src={userimage} alt="" className='userimg'/>
+                <div className="drop-profile-nav-list">
+                 <p className='imageholder'><img src={userimage} alt="" className='userimg-inside'/></p>
+               <Link to='/profile' className='view-profile-nav'> <p >View Profile</p></Link> 
+               <Link to='/profile' className='view-profile-nav'> <p>Verify email</p></Link> 
+               <Link to='/profile' className='view-profile-nav'> <p>Change Password</p></Link> 
+               <Link to='/login' className='view-profile-nav'> <p >Login</p></Link> 
+               <Link to='/login' className='view-profile-nav'> <p onClick={logout}>Logout</p></Link> 
+                 
+                 <p>Login</p>
                 </div>
               </div>
             </div>

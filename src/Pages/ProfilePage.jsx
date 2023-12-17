@@ -4,10 +4,8 @@ import UserProfile from '../Components/UserProfile/UserProfile'
 // import Footer from '../Components/Footer/Footer'
 function ProfilePage() {
   return (
-    <div className='profile'>
-     
+    <div className='profilePage'>
       <UserProfile/>
-      
     </div>
   )
 }
