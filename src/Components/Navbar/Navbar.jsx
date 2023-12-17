@@ -5,14 +5,20 @@ import { Link } from 'react-router-dom'
 import { auth } from '../../firebase/config'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import userimage from './profile.jpg'
+import { useNavigate } from 'react-router-dom'
+
+
 function Navbar() {
   const[userStatus,setUserStatus]=useState(false)
   const[username,SetUsername]=useState('')
+  const navigate=useNavigate()
+
   const logout=async(e)=>{
     e.preventDefault()
     try {
       await signOut(auth).then(()=>{
         console.log('signed out');
+        navigate('/login')
       })
     } catch (error) {
       console.log(error.message);
@@ -64,13 +70,9 @@ function Navbar() {
                 <div className="drop-profile-nav-list">
                  <p className='imageholder'><img src={userimage} alt="" className='userimg-inside'/></p>
               <p >{userStatus?username:"User"}</p>
-               <Link to='/profile' className='view-profile-nav'> <p >View Profile</p></Link> 
-               <Link to='/profile' className='view-profile-nav'> <p>Verify email</p></Link> 
-               <Link to='/profile' className='view-profile-nav'> <p>Change Password</p></Link> 
-               <Link to='/login' className='view-profile-nav'> <p >Login</p></Link> 
-               <Link to='/login' className='view-profile-nav'> <p onClick={logout}>Logout</p></Link> 
-                 
-                 <p>Login</p>
+                
+                <p>{userStatus?<Link to='/profile' className='view-profile-nav'> <p >View Profile</p></Link>:""}</p>
+                 <p>{userStatus?<p onClick={logout}>Logout</p>: <Link to='/login' className='view-profile-nav'> <p >Login</p></Link> }</p>
                 </div>
               </div>
             </div>

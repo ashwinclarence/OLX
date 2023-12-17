@@ -14,14 +14,18 @@ function Profile() {
     const[emailVerify,setEmailVerify]=useState(false)
 
     onAuthStateChanged(auth,(user)=>{
-          SetUsername(user.displayName)
-          setPhone(user.phoneNumber)
-          setEmail(user.email)
-          if(user.emailVerified){
-            setEmailVerify(true)
-          }else{
-            setEmailVerify(false)
-          }
+         try {
+            SetUsername(user.displayName)
+            setPhone(user.phoneNumber)
+            setEmail(user.email)
+            if(user.emailVerified){
+              setEmailVerify(true)
+            }else{
+              setEmailVerify(false)
+            }
+         } catch (error) {
+            console.log(error);
+         }
       })
    
   return (
