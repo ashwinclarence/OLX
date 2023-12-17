@@ -49,10 +49,15 @@ function Navbar() {
             </div>
           </li>
           <li>   
-              <div className="login-logout">
-                <h2 className='login-action-box'><Link to='/login' className='login'>Login</Link></h2>
-                <h2 className='login-action-box logout' onClick={logout}>Logout</h2>
+          <div className="action-box">
+              <div className="action">
+                <h2 className='language'><i class="fa-solid fa-caret-down"></i></h2>
+                <div className="drop-language-list">
+                 <p className='active-language'>English<i class="fa-solid fa-check"></i></p>
+                 <p>Hindi</p>
+                </div>
               </div>
+            </div>
           </li>
           <li>
               <div className="become-seller">

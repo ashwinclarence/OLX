@@ -2,7 +2,7 @@ import React from 'react'
 // import Navbar from '../Components/Navbar/Navbar'
 import UserProfile from '../Components/UserProfile/UserProfile'
 // import Footer from '../Components/Footer/Footer'
-function Profile() {
+function ProfilePage() {
   return (
     <div className='profile'>
      
@@ -12,4 +12,4 @@ function Profile() {
   )
 }
 
-export default Profile
+export default ProfilePage
