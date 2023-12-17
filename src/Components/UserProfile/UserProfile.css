@@ -1,0 +1,74 @@
+.profile{
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding-top: 5rem;
+    background: transparent;
+
+} 
+.profile::before {
+    content: '';
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(101px); /* Adjust the blur intensity as needed */
+    z-index: -1;
+ }
+.profile-box{
+    width: 500px;
+    display: block;
+    margin: auto;
+    box-shadow: 2px 2px 40px #012f35;
+    padding: 40px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    cursor: default;
+    z-index: 100;
+    background: #fff;
+}
+.profile-box img{
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+.profile-box input {
+    display: block;
+    margin: auto;
+    width: 400px;
+    height: 40px;
+    margin-top: 2rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+.profile-box input::placeholder{
+    padding-left: 10px;
+}
+.profile-box .update-password{
+    width: 250px;
+}
+.profile-box button{
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #012f35;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 18px;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
+.profile-box button:hover{
+    scale: 1.05;
+}
+.profile-box h5{
+    margin-top: 2rem;
+}

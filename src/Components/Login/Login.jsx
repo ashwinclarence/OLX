@@ -3,6 +3,7 @@ import './Login.css'
 import register_logo from "./olx img.png"
 import { Link, useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../firebase/config'
 
 function Login() {
   let navigate=useNavigate()
@@ -11,8 +12,8 @@ function Login() {
   const login = async(e) => {
     e.preventDefault()
     try {
-      await signInWithEmailAndPassword(username,password).then(()=>{
-        alert('logged in')
+      await signInWithEmailAndPassword(auth,username,password).then((userCredential)=>{
+        alert('Welcome Back '+userCredential.user.displayName)
         navigate('/')
       })
     } catch (error) {
