@@ -81,7 +81,7 @@ return (
                     required />
                 <button className='btn-register' onClick={signIn}>Register</button>
                 <h5>already have an account?  <Link to='/login'>Login</Link> </h5>
-                <h6><Link to='/' className='go-back'>Back to Home</Link></h6>
+                <h6><Link to='/' className='go-back'>Back to Home <i class="fa-solid fa-house"></i></Link></h6>
                 <h6 id='ermessage'></h6>
             </form>
         </div>

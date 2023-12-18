@@ -70,7 +70,7 @@ function PasswordUpdate() {
                         required />
                     <button onClick={updatepass} className='btn-update'>Update</button>
 
-                    <h6><Link to='/profile' className='go-back'>Back to Profile</Link></h6>
+                    <h6 className='go-back'><Link to='/profile' className='go-back'>Back to Profile <i class="fa-solid fa-address-card"></i></Link></h6>
 
                 </form>
             </div>

@@ -51,7 +51,7 @@ function Profile() {
                 <button className='update-password'>Update Phone Number</button>
                 <Link to='/update-password' className='update-password'><button className='update-password' >Update password</button></Link>
                 <button className='update-password'>Delete Account</button>
-                <h6><Link to='/' className='go-back'>Back to Home</Link></h6>
+                <h6 className='go-back'><Link to='/' className='go-back'>Back to Home <i class="fa-solid fa-house"></i></Link></h6>
 
             </form>
         </div>

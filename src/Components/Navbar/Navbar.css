@@ -143,23 +143,6 @@ li {
     text-decoration: none;
     color: #012f35;
 }
-.become-seller {
-    margin-right: 2rem;
-
-}
-
-.become-seller h2 {
-    font-size: 20px;
-    border: 6px solid #012f35;
-    border-radius: 20px;
-    padding: 4px 10px;
-    box-shadow: 2px 2px 25px #012f35;
-}
-
-.become-seller i {
-    margin-right: 5px;
-    font-size: 18px;
-}
 
 
 
@@ -217,4 +200,26 @@ li {
 .view-profile-nav{
     text-decoration: none;
     color: #000;
+}
+
+.become-seller {
+    margin-right: 2rem;
+
+}
+.sell-product{
+    text-decoration: none;
+    color: #000;
+}
+
+.become-seller h2 {
+    font-size: 20px;
+    border: 6px solid #012f35;
+    border-radius: 20px;
+    padding: 4px 10px;
+    box-shadow: 2px 2px 25px #012f35;
+}
+
+.become-seller i {
+    margin-right: 5px;
+    font-size: 18px;
 }

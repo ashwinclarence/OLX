@@ -1,4 +1,4 @@
-.profile{
+.product{
     position: relative;
     width: 100%;
     margin: auto;
@@ -6,7 +6,7 @@
     background: transparent;
 
 } 
-.profile::before {
+.product::before {
     content: '';
     position: absolute;
     top: 3rem;
@@ -17,7 +17,7 @@
     filter: blur(101px); /* Adjust the blur intensity as needed */
     z-index: -1;
  }
-.profile-box{
+.product-box{
     width: 500px;
     display: block;
     margin: auto;
@@ -30,17 +30,34 @@
     z-index: 100;
     background: #fff;
 }
-.profile-box img{
+.product-box img{
     display: block;
     margin: auto;
     width: 50%;
 }
-.profile-box label{
+.product-box label{
     display: flex;
     margin-top: 2rem;
     margin-bottom: 4px;
 }
-.profile-box input {
+.product-box .product-image{
+    border: none;
+    outline: none;
+}
+
+.product-box input {
+    display: block;
+    margin: auto;
+    width: 400px;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 1rem;
+}
+.product-box input::placeholder{
+    padding-left: 10px;
+}
+.product-box select {
     display: block;
     margin: auto;
     width: 400px;
@@ -49,14 +66,30 @@
     border-radius: 5px;
     padding-left: 1rem;
 }
-.profile-box input::placeholder{
+.product-box select::placeholder{
     padding-left: 10px;
 }
-.profile-box .update-password{
+.product-box textarea {
+    display: block;
+    margin: auto;
+    width: 400px;
+    height: 250px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding-left: 1rem;
+    resize: none;
+    padding: 10px;
+    text-align: justify;
+    line-height: 20px;
+}
+.product-box textarea::placeholder{
+    padding: 10px;
+}
+.product-box .add-product{
     width: 250px;
     text-decoration: none;
 }
-.profile-box button{
+.product-box button{
     display: block;
     margin: auto;
     margin-top: 2rem;
@@ -72,22 +105,9 @@
     transition: .3s ease-in-out;
     cursor: pointer;
 }
-.profile-box button:hover{
+.product-box button:hover{
     scale: 1.05;
 }
-
-
-.fa-circle-xmark{
-    color: red;
-    scale: 1.3;
-    margin-left: 10px;
-}
-.fa-circle-check{
-    color: green;
-    scale: 1.3;
-    margin-left: 10px;
-}
-
-.go-back{
+.product-box .go-back{
     margin-top: 20px;
 }

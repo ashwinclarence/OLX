@@ -79,7 +79,7 @@ function Navbar() {
           </li>
           <li>
               <div className="become-seller">
-                <h2><i class="fa-solid fa-plus"></i>Sell</h2>
+             <Link to='/sell-product' className='sell-product'><h2><i class="fa-solid fa-plus"></i>Sell</h2></Link>   
               </div>
           </li>
         </ul>
