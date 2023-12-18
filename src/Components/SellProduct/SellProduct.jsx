@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import "./SellProduct.css"
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-
+import { useNavigate,Link } from 'react-router-dom'
+import { addDoc } from 'firebase/firestore'
+import {colRef} from "../../firebase/config"
+import proimagedefault from './productimageload.png'
 
 function SellProduct() {
     const navigate=useNavigate()
@@ -10,22 +11,31 @@ function SellProduct() {
     const[productPrice,setProductPrice]=useState('')
     const[productCategory,setProductCategory]=useState('')
     const[productDescription,setProductDescription]=useState('')
+    const[productImage,setProductImage]=useState('')
   
     const addProduct=(e)=>{
         e.preventDefault()
-        alert("heheheheh")
-        console.log(productName);
-        console.log(productPrice);
-        console.log(productCategory);
-        console.log(productDescription);
+       addDoc(colRef,{
+       productName,
+       productPrice,
+       productCategory,
+       productDescription
+       }).then(()=>{
+        setProductName("")
+       setProductPrice("")
+       setProductCategory("")
+       setProductDescription("")
+       alert("Item Added")
+       navigate('/')
+       })
     }
 
   return (
     <div className='product'>
     <div className="product-box">
         <form action="" onSubmit={addProduct}>
-           
-            <label htmlFor="">Name</label>
+           <div className="product-box-left">
+           <label htmlFor="">Name</label>
             <input 
             type="text"
             value={productName}
@@ -68,13 +78,22 @@ function SellProduct() {
             value={productDescription}
             onChange={(e)=>setProductDescription(e.target.value)}>
             </textarea>
-            <label htmlFor="">Description</label>
-            <img src='' alt="" />
-            <input type="file" className='product-image' required/>
+           </div>
+           <div className="product-box-right">
+           <label htmlFor="">Product image</label>
+            <img src={productImage?URL.createObjectURL(productImage):proimagedefault} alt="" />
+            <input 
+            type="file" 
+            className='product-image' 
+            onChange={(e)=>{setProductImage(e.target.files[0])}}
+            required/>
+
+
            <button type='submit' className='add-product'>Add Product</button>
             
             <h6 className='go-back'><Link to='/' className='go-back'>Back to Home <i class="fa-solid fa-house"></i></Link></h6>
 
+           </div>
         </form>
     </div>
   

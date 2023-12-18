@@ -18,7 +18,9 @@
     z-index: -1;
  }
 .product-box{
-    width: 500px;
+    position: relative;
+    width: 90%;
+    height: 100vh;
     display: block;
     margin: auto;
     box-shadow: 2px 2px 40px #012f35;
@@ -29,14 +31,30 @@
     cursor: default;
     z-index: 100;
     background: #fff;
+    overflow: hidden;
+}
+.product-box-left{
+    position: absolute;
+    left: 0;
+    width: 50%;
+}
+.product-box-right{
+    position: absolute;
+    right: 0;
+    width: 50%;
 }
 .product-box img{
     display: block;
     margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     width: 50%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px #012f35;
 }
 .product-box label{
     display: flex;
+    margin-left: 16%;
     margin-top: 2rem;
     margin-bottom: 4px;
 }
@@ -109,5 +127,8 @@
     scale: 1.05;
 }
 .product-box .go-back{
+    display: flex;
+    justify-content: flex-end;
     margin-top: 20px;
+    margin-right: 20px;
 }

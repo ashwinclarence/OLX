@@ -16,11 +16,11 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 // initialize services
-const db=getFirestore()
+export const db=getFirestore()
 export const auth=getAuth()
 
 // collection reference
-const colRef=collection(db,"fruits")
+export const colRef=collection(db,"fruits")
 
 
 // get collection data
