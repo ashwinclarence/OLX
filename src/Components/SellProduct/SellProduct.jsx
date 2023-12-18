@@ -80,6 +80,7 @@ function SellProduct() {
                 <option value="Furniture">Furniture</option>
                 <option value="Electronics">Electronics</option>
                 <option value="Home Appliances">Home Appliances</option>
+                <option value="Food Items">Food Items</option>
             </select>
             <label htmlFor="">Description</label>
             <textarea 

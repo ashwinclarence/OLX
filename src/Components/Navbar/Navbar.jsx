@@ -38,14 +38,10 @@ function Navbar() {
 
   // function get current user information from firebase
   getDocs(userRef).then((snapshot)=>{
-      console.log(snapshot.docs);
       snapshot.docs.forEach((doc)=>{
         if(userid===doc.data().Id){
           setNavUserProfile(doc.data().ProfileImage)
-          console.log(doc.data().ProfileImage)
-          console.log("userfound "+doc.data().username)
         }
-        console.log(doc.data().Id)
       }) 
     })
     .catch(err=>{
