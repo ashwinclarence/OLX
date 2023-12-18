@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import './Profile.css'
 import profileImage from "./profile.png"
-import {auth} from '../../firebase/config'
+import {auth,userRef} from '../../firebase/config'
 import { onAuthStateChanged } from 'firebase/auth'
 import { Link } from 'react-router-dom'
-
+import { getDocs } from 'firebase/firestore'
 
 
 function Profile() {
@@ -12,14 +12,16 @@ function Profile() {
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const[emailVerify,setEmailVerify]=useState(false)
-
+    const[userid,setUserid]=useState('')
+    const[navUserProfile,setNavUserProfile]=useState('')
     onAuthStateChanged(auth,(user)=>{
          try {
             SetUsername(user.displayName)
-            setPhone(user.phoneNumber)
             setEmail(user.email)
+            setUserid(user.uid)
             if(user.emailVerified){
               setEmailVerify(true)
+              
             }else{
               setEmailVerify(false)
             }
@@ -27,12 +29,28 @@ function Profile() {
             console.log(error);
          }
       })
+      // function get current user information from firebase
+  getDocs(userRef).then((snapshot)=>{
+    console.log(snapshot.docs);
+    snapshot.docs.forEach((doc)=>{
+      if(userid===doc.data().Id){
+        setNavUserProfile(doc.data().ProfileImage)
+        setPhone(doc.data().phoneNumber)
+        console.log(doc.data().ProfileImage)
+        console.log("userfound "+doc.data().username)
+      }
+      console.log(doc.data().Id)
+    }) 
+  })
+  .catch(err=>{
+    console.log(err.message);
+  })
    
   return (
     <div className='profile'>
         <div className="profile-box">
             <form action="">
-                <img src={profileImage} alt="" />
+                <img src={navUserProfile?navUserProfile:profileImage} alt="" />
                 <label htmlFor="">Full Name</label>
                 <input 
                 type="text"

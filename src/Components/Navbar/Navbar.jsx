@@ -2,15 +2,17 @@ import React, { useState } from 'react'
 import logo from './logo.png'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
-import { auth } from '../../firebase/config'
+import { auth, userRef } from '../../firebase/config'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
-import userimage from './profile.jpg'
+import userimage from './profile.png'
 import { useNavigate } from 'react-router-dom'
-
+import { getDocs } from 'firebase/firestore'
 
 function Navbar() {
   const[userStatus,setUserStatus]=useState(false)
-  const[username,SetUsername]=useState('')
+  const[username,setUsername]=useState('')
+  const[userid,setUserid]=useState('')
+  const[navUserProfile,setNavUserProfile]=useState('')
   const navigate=useNavigate()
 
   const logout=async(e)=>{
@@ -26,15 +28,32 @@ function Navbar() {
   }
   onAuthStateChanged(auth,(user)=>{
     if(user!==null){
-      SetUsername(user.displayName)
+      setUsername(user.displayName)
+      setUserid(user.uid)
       setUserStatus(true)
     }else{
       setUserStatus(false)
     }
   })
 
-  return (
-    <div className='navbar'>
+  // function get current user information from firebase
+  getDocs(userRef).then((snapshot)=>{
+      console.log(snapshot.docs);
+      snapshot.docs.forEach((doc)=>{
+        if(userid===doc.data().Id){
+          setNavUserProfile(doc.data().ProfileImage)
+          console.log(doc.data().ProfileImage)
+          console.log("userfound "+doc.data().username)
+        }
+        console.log(doc.data().Id)
+      }) 
+    })
+    .catch(err=>{
+      console.log(err.message);
+    })
+    
+    return (
+      <div className='navbar'>
       <div className="navrow">
         <div className="logo">
           <img src={logo} alt="olx" />
@@ -66,9 +85,9 @@ function Navbar() {
           <li>   
           <div className="profile-nav-box">
               <div className="drop-profile-nav">
-                <img src={userimage} alt="" className='userimg'/>
+                <img src={navUserProfile?navUserProfile:userimage} alt="" className='userimg'/>
                 <div className="drop-profile-nav-list">
-                 <p className='imageholder'><img src={userimage} alt="" className='userimg-inside'/></p>
+                 <p className='imageholder'><img src={navUserProfile?navUserProfile:userimage} alt="" className='userimg-inside'/></p>
               <p >{userStatus?username:"User"}</p>
                 
                 <p>{userStatus?<Link to='/profile' className='view-profile-nav'> <p >View Profile</p></Link>:""}</p>

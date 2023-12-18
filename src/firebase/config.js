@@ -28,7 +28,6 @@ export const storage = getStorage(app);
 export const colRef=collection(db,"fruits")
 export const userRef=collection(db,"User")
 export const storageRef=ref(storage)
-export const imageStorageRef=ref(storage,"image")
 
 // get collection data
 // getDocs(colRef).then((snapshot)=>{

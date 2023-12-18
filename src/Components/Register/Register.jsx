@@ -4,9 +4,9 @@ import register_logo from "./olx img.png"
 import defaultProfileImage from './profile.png'
 import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth'
-import { auth, userRef, imageStorageRef } from '../../firebase/config'
+import { auth, userRef,storage } from '../../firebase/config'
 import { addDoc } from 'firebase/firestore'
-import { uploadBytes,getDownloadURL } from 'firebase/storage'
+import { uploadBytes, getDownloadURL,ref } from 'firebase/storage'
 
 function Register() {
     const navigate = useNavigate();
@@ -15,7 +15,9 @@ function Register() {
     const [email, setEmail] = useState('')
     const [password, Setpassword] = useState('')
     const [profileImage, setProfileImage] = useState('')
-    const [profileImageurl, setProfileImageurl] = useState('')
+    let date = new Date()
+
+
     // function to sign-in
     const signIn = async (e) => {
         e.preventDefault();
@@ -25,51 +27,38 @@ function Register() {
                 console.log(cred.user.uid)
                 navigate('/')
             })
-
-
             await updateProfile(auth.currentUser, {
                 displayName: name
             }).then(() => {
                 console.log("user name changed to " + auth.currentUser.displayName);
             })
 
-
+            //function to send user verification email
             await sendEmailVerification(auth.currentUser)
-
-            // function to add profile imag to firestorage
-  
-            uploadBytes(imageStorageRef, profileImage)
-              .then((snapshot) => {
-                console.log(snapshot);  
-                getDownloadURL(snapshot.ref).then((url)=>{
-                    console.log("url of the image is "+url);
-                    setProfileImageurl(url)
+            const imageStorageRef=ref(storage,`proImage/${auth.currentUser.uid}`)
+            // function to add profile image to firestorage
+            await uploadBytes(imageStorageRef, profileImage)
+                .then((snapshot) => {
+                    console.log(snapshot);
+                    // function to generate the url of current uploaded image 
+                    getDownloadURL(snapshot.ref).then((url) => {
+                        console.log("url of the image is " + url);
+                        // function to add user details to firestore
+                        addDoc(userRef, {
+                            username: name,
+                            Id: auth.currentUser.uid,
+                            email: email,
+                            phoneNumber: phone,
+                            joinDate: date.toDateString(),
+                            ProfileImage: url
+                        }).then(() => {
+                            console.log("user added to firestore")
+                        })
+                    })
                 })
-                           
-             
-            })
-            
-            
-            
-            // function to add user details to firestore
-
-            let date = new Date()
-
-            try {
-                await addDoc(userRef, {
-                    username: name,
-                    Id: auth.currentUser.uid,
-                    email: email,
-                    phoneNumber: phone,
-                    joinDate: date.toDateString(),
-                    ProfileImage:profileImageurl
-                }).then(() => {
-                    console.log("user added to firestore")
-                })
-            } catch (error) {
-
-            }
             alert(auth.currentUser.displayName + " your registeration is Successful")
+    
+
         } catch (error) {
             console.log(error.message);
             wipeOutData()
@@ -81,6 +70,7 @@ function Register() {
         setPhone('')
         setEmail('')
         Setpassword('')
+        setProfileImage('')
     }
 
     // console.log(auth?.currentUser)
