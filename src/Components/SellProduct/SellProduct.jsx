@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import "./SellProduct.css"
 import { useNavigate,Link } from 'react-router-dom'
 import { addDoc } from 'firebase/firestore'
-import {colRef} from "../../firebase/config"
+import {auth, itemRef, storage} from "../../firebase/config"
 import proimagedefault from './productimageload.png'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
 function SellProduct() {
     const navigate=useNavigate()
@@ -12,22 +13,34 @@ function SellProduct() {
     const[productCategory,setProductCategory]=useState('')
     const[productDescription,setProductDescription]=useState('')
     const[productImage,setProductImage]=useState('')
-  
-    const addProduct=(e)=>{
+    let date=new Date()
+    const addProduct=async(e)=>{
         e.preventDefault()
-       addDoc(colRef,{
-       productName,
-       productPrice,
-       productCategory,
-       productDescription
-       }).then(()=>{
-        setProductName("")
-       setProductPrice("")
-       setProductCategory("")
-       setProductDescription("")
-       alert("Item Added")
-       navigate('/')
-       })
+        // function to add profile image to firestorage
+    const imageStorageRef=ref(storage,`proImage/${auth.currentUser.uid}/${Date.now()}`)
+    await uploadBytes(imageStorageRef, productImage)
+    .then((snapshot) => {
+        // function to generate the url of current uploaded image 
+        getDownloadURL(snapshot.ref).then((url) => {
+            // function to add user details to firestore
+            addDoc(itemRef, {
+              productName,
+              productPrice,
+              productCategory,
+              productDescription,
+              uploadedUserId:auth.currentUser.uid,
+              uploadedTime:date.toDateString(),
+              productUrl:url
+            }).then(() => {
+              setProductName("")
+              setProductPrice("")
+              setProductCategory("")
+              setProductDescription("")
+              alert("Item Added")
+              navigate('/')
+            })
+        })
+    })
     }
 
   return (
@@ -53,7 +66,7 @@ function SellProduct() {
             <label htmlFor="">Category</label>
             <select 
             name="product-category" 
-            id="product-category" 
+            id="product-category"
             required
             value={productCategory}
             onChange={(e)=>setProductCategory(e.target.value)}>
@@ -71,7 +84,8 @@ function SellProduct() {
             <label htmlFor="">Description</label>
             <textarea 
             name="product-description" 
-            id="product-description" 
+            id="product-description"
+            className='product-description' 
             placeholder='Few words about your product'
             maxLength={500}
             required

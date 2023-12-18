@@ -25,7 +25,7 @@ export const auth=getAuth()
 export const storage = getStorage(app);
 
 // collection reference
-export const colRef=collection(db,"fruits")
+export const itemRef=collection(db,"item")
 export const userRef=collection(db,"User")
 export const storageRef=ref(storage)
 

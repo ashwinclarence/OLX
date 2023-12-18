@@ -35,8 +35,8 @@ function Register() {
 
             //function to send user verification email
             await sendEmailVerification(auth.currentUser)
-            const imageStorageRef=ref(storage,`proImage/${auth.currentUser.uid}`)
             // function to add profile image to firestorage
+            const imageStorageRef=ref(storage,`userImage/${auth.currentUser.uid}`)
             await uploadBytes(imageStorageRef, profileImage)
                 .then((snapshot) => {
                     console.log(snapshot);
