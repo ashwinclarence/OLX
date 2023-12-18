@@ -1,6 +1,10 @@
 import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth'
 import {getFirestore,collection, getDocs} from 'firebase/firestore'
+import {getStorage,ref} from 'firebase/storage'
+
+
+
 
 const firebaseConfig = {
     apiKey:process.env.REACT_APP_FIREBASE_API_KEY,
@@ -13,25 +17,28 @@ const firebaseConfig = {
   };
 
  // initialize firebase app
-initializeApp(firebaseConfig);
+const app=initializeApp(firebaseConfig);
 
 // initialize services
 export const db=getFirestore()
 export const auth=getAuth()
+export const storage = getStorage(app);
 
 // collection reference
 export const colRef=collection(db,"fruits")
 export const userRef=collection(db,"User")
+export const storageRef=ref(storage)
+export const imageStorageRef=ref(storage,"image")
 
 // get collection data
-getDocs(colRef).then((snapshot)=>{
-  console.log(snapshot.docs);
-  let fruits=[]
-  snapshot.docs.forEach((doc)=>{
-    fruits.push({...doc.data(),id:doc.id})
-  }) 
-  console.log(fruits)
-})
-.catch(err=>{
-  console.log(err.message);
-})
+// getDocs(colRef).then((snapshot)=>{
+//   console.log(snapshot.docs);
+//   let fruits=[]
+//   snapshot.docs.forEach((doc)=>{
+//     fruits.push({...doc.data(),id:doc.id})
+//   }) 
+//   console.log(fruits)
+// })
+// .catch(err=>{
+//   console.log(err.message);
+// })
