@@ -21,7 +21,7 @@ export const auth=getAuth()
 
 // collection reference
 export const colRef=collection(db,"fruits")
-
+export const userRef=collection(db,"User")
 
 // get collection data
 getDocs(colRef).then((snapshot)=>{

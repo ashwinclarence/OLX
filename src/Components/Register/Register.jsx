@@ -3,7 +3,8 @@ import './Register.css'
 import register_logo from "./olx img.png"
 import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth'
-import { auth } from '../../firebase/config'
+import { auth, userRef } from '../../firebase/config'
+import { addDoc } from 'firebase/firestore'
 
 function Register() {
     const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Register() {
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [password, Setpassword] = useState('')
+    const [registeruserid, Setregisteruserid] = useState('')
     
 // function to sign-in
 const signIn = async (e) => {
@@ -18,22 +20,41 @@ const signIn = async (e) => {
     try {
         await createUserWithEmailAndPassword(auth, email, password).then((cred) => {
             console.log("user created", cred.user);
-            // wipeOutData()
-        }).then(() => {
-            navigate('/')
+           console.log(cred.user.uid) 
+           navigate('/')  
         })
+
+
         await updateProfile(auth.currentUser, {
             displayName: name
         }).then(() => {
             console.log("user name changed to " + auth.currentUser.displayName);
         })
-        await sendEmailVerification(auth.currentUser)
 
+
+        await sendEmailVerification(auth.currentUser)
+        
+        // function to add user details to firestore
+
+        let date=new Date()
+
+       try {
+        await addDoc(userRef,{
+            username:name,
+            Id:auth.currentUser.uid,
+            email:email,
+            phoneNumber:phone,
+            joinDate:date.toDateString()
+        }).then(()=>{
+          console.log("user added to firestore")
+        })
+       } catch (error) {
+        
+       } 
         alert(auth.currentUser.displayName + " your registeration is Successful")
     } catch (error) {
         console.log(error.message);
         wipeOutData()
-        // alert(error.message)
         document.getElementById('ermessage').innerHTML = error.message
     }
 }
