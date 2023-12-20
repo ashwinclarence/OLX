@@ -18,7 +18,9 @@
     z-index: -1;
  }
 .profile-box{
-    width: 500px;
+    position: relative;
+    width: 90%;
+    height: 90vh;
     display: block;
     margin: auto;
     box-shadow: 2px 2px 40px #012f35;
@@ -29,6 +31,18 @@
     cursor: default;
     z-index: 100;
     background: #fff;
+    overflow: hidden;
+}
+.profile-box-left{
+    position: absolute;
+    left: 0;
+    width: 50%;
+}
+.profile-box-right{
+    position: absolute;
+    right: 0;
+    top: 250px;
+    width: 50%;
 }
 .profile-box img{
     display: block;
@@ -40,6 +54,7 @@
 }
 .profile-box label{
     display: flex;
+    margin-left: 16%;
     margin-top: 2rem;
     margin-bottom: 4px;
 }
@@ -59,6 +74,7 @@
     width: 250px;
     text-decoration: none;
 }
+
 .profile-box button{
     display: block;
     margin: auto;
@@ -92,5 +108,8 @@
 }
 
 .go-back{
+    display: flex;
+    justify-content: flex-end;
     margin-top: 20px;
+    margin-right: 20px;
 }
