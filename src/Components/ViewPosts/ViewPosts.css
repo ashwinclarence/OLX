@@ -1,0 +1,118 @@
+.view-post-container{
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 2rem 1rem;
+    background: #f1f1f1;
+}
+
+.view-post-row{
+    position: relative;
+    width: 95%;
+    height: 105vh;
+    margin: auto;
+    outline: none;
+    border: none;
+    cursor: default;
+    z-index: 100;
+    background: transparent;
+    overflow: hidden;
+}
+.view-post-left{
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 60%;
+    padding: 10px 10px;
+}
+.view-post-right{
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 40%;
+    padding: 10px 10px;
+}
+
+.image-box{
+    height: 70vh;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #000000;
+    border: 1px solid #00000052;
+    overflow: hidden;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.image-box img{
+    background-color: #ffffff;
+}
+.description-box{
+    height: 30vh;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+   border: 1px solid #00000052;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+.description-box h5{
+    text-align: justify;
+    line-height: 20px;
+}
+
+.price-box{
+    height: 25vh;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+   border: 1px solid #00000052;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   overflow: hidden;
+}
+.seller-box{
+    height: 25vh;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+   border: 1px solid #00000052;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+   overflow: hidden;
+}
+.seller-box-inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.seller-box img{
+    width: 50px;
+   border: 1px solid #00000052;
+    border-radius: 50%;
+}
+.seller-box button{
+    width: 60%;
+    height: 40px;
+    border-radius: 20px;
+}
+.contact-box{
+    height: 25vh;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+   border: 1px solid #00000052;
+   overflow: hidden;
+}

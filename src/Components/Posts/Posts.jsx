@@ -9,17 +9,27 @@ function Posts() {
 
 
   useEffect(() => {
-    const fetchProducts = async () => {
+   
       try {
-        const snapshot = await getDocs(itemRef);
-        const productsData = snapshot.docs.map((doc) => doc.data());
-        setProducts(productsData);
+        // const snapshot = await getDocs(itemRef);
+        // const productsData = snapshot.docs.map((doc) => doc.data());
+        // setProducts(productsData);
+        getDocs(itemRef).then((snapshot)=>{
+         const allproducts=snapshot.docs.map((doc)=>{
+            return{
+              ...doc.data(),
+              id:doc.id
+            }
+          })
+          setProducts(allproducts)
+        })
+
       } catch (error) {
         console.error(error.message);
       }
-    };
+ 
 
-    fetchProducts();
+   
   }, []); // Make sure to pass an empty dependency array to run the effect only once on mount
 
  

@@ -6,6 +6,7 @@ import Login from '../src/Pages/Login'
 import ProfilePage from '../src/Pages/ProfilePage'
 import UpdatePasswordUser from '../src/Pages/UpdatePasswordUser'
 import ProductSell from '../src/Pages/ProductSell'
+import ProductView from '../src/Pages/ProductView'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/profile' element={<ProfilePage/>}></Route>
         <Route path='/update-password' element={<UpdatePasswordUser/>}></Route>
         <Route path='/sell-product' element={<ProductSell/>}></Route>
+        <Route path='/view-product' element={<ProductView/>}></Route>
         </Routes>
       </Router>
     </div>
