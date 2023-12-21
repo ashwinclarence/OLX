@@ -89,6 +89,7 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 20px;
+    z-index: 9999;
 }
 
 .drop-language-list p {
@@ -99,6 +100,7 @@
     transition: .3s ease-in-out;
     font-size: 14px;
     border-radius: 20px;
+   
 }
 
 .drop-language-list p:hover {
@@ -129,23 +131,6 @@ li {
 .language i {
     margin-left: 20px;
 }
-
-.login-logout h2 {
-    margin-top: 10px;
-    font-size: 20px;
-    text-decoration: none;
-    color: red;
-}
-.login{
-    text-decoration: none;
-    color: #012f35;
-}
-.logout{
-    text-decoration: none;
-    color: #012f35;
-}
-
-
 
 .drop-profile-nav {
     position: relative;
@@ -219,7 +204,18 @@ li {
     border: 6px solid #012f35;
     border-radius: 20px;
     padding: 4px 10px;
-    box-shadow: 2px 2px 25px #012f35;
+    box-shadow: 1px 1px 10px #012f35;
+    border-top: 6px solid red;
+    border-bottom: 6px solid green;
+    border-left: 6px solid blue;
+    border-right: 6px solid yellow;
+    transition: .5s ease-in-out;
+}
+.become-seller h2:hover{
+    border-right: 6px solid red;
+    border-left: 6px solid green;
+    border-top: 6px solid blue;
+    border-bottom: 6px solid yellow;
 }
 
 .become-seller i {

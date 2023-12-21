@@ -3,6 +3,8 @@ import './Posts.css'
 import React, { useEffect, useState } from 'react';
 import { getDocs } from 'firebase/firestore';
 import { itemRef } from '../../firebase/config';
+import { Link } from 'react-router-dom';
+
 
 function Posts() {
   const [products, setProducts] = useState([]);
@@ -11,9 +13,6 @@ function Posts() {
   useEffect(() => {
    
       try {
-        // const snapshot = await getDocs(itemRef);
-        // const productsData = snapshot.docs.map((doc) => doc.data());
-        // setProducts(productsData);
         getDocs(itemRef).then((snapshot)=>{
          const allproducts=snapshot.docs.map((doc)=>{
             return{
@@ -35,8 +34,9 @@ function Posts() {
  
   return (
     <div className='posts'>
-      {products.map((product, index) => (
-        <div key={index} className='post-box'>
+      {products.map((product) => (
+        <Link to='/view-product' state={{id:product.id}}>
+        <div key={product.id} className='post-box'>
           <div className='post-img'>
           <i className='fa-solid fa-heart'></i>
             <img src={product.productUrl} alt={product.productName} />
@@ -54,6 +54,7 @@ function Posts() {
             </ul>
           </div>
         </div>
+        </Link>
       ))}
     </div>
   );

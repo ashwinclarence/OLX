@@ -1,4 +1,4 @@
-.view-post-container{
+.view-post-container {
     position: relative;
     width: 100%;
     margin: auto;
@@ -6,10 +6,10 @@
     background: #f1f1f1;
 }
 
-.view-post-row{
+.view-post-row {
     position: relative;
     width: 95%;
-    height: 105vh;
+    height: 110vh;
     margin: auto;
     outline: none;
     border: none;
@@ -18,7 +18,8 @@
     background: transparent;
     overflow: hidden;
 }
-.view-post-left{
+
+.view-post-left {
     position: absolute;
     left: 0;
     display: flex;
@@ -27,7 +28,8 @@
     width: 60%;
     padding: 10px 10px;
 }
-.view-post-right{
+
+.view-post-right {
     position: absolute;
     right: 0;
     display: flex;
@@ -37,7 +39,7 @@
     padding: 10px 10px;
 }
 
-.image-box{
+.image-box {
     height: 70vh;
     padding: 10px;
     border-radius: 10px;
@@ -45,74 +47,119 @@
     border: 1px solid #00000052;
     overflow: hidden;
     display: flex;
-   justify-content: center;
-   align-items: center;
+    justify-content: center;
+    align-items: center;
+
+
 }
-.image-box img{
+
+.image-box img {
+    width: 40vw;
+    height: 70vh;
+    object-fit: scale-down;
     background-color: #ffffff;
+
 }
-.description-box{
+
+.description-box {
     height: 30vh;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
     background-color: #ffffff;
-   border: 1px solid #00000052;
-   overflow: hidden;
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
+    border: 1px solid #00000052;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-.description-box h5{
+
+.description-box h5 {
     text-align: justify;
     line-height: 20px;
 }
 
-.price-box{
+.price-box {
     height: 25vh;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #00000052;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.price-box-row-one {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.price-box-row-one .fa-heart {
+    margin-right: 15px;
+    transition: .2s ease-in-out;
+}
+
+.price-box-row-one .fa-heart:hover {
+    color: red;
+}
+
+.price-box .posted-date {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.seller-box {
+    height: 30vh;
     padding: 10px;
     border-radius: 10px;
     background-color: #ffffff;
-   border: 1px solid #00000052;
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
-   overflow: hidden;
+    border: 1px solid #00000052;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
 }
-.seller-box{
-    height: 25vh;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #ffffff;
-   border: 1px solid #00000052;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   gap: 20px;
-   overflow: hidden;
-}
-.seller-box-inner{
+
+.seller-box-inner {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
-.seller-box img{
+
+.seller-box img {
     width: 50px;
-   border: 1px solid #00000052;
+    border: 1px solid #00000052;
     border-radius: 50%;
 }
-.seller-box button{
+
+.seller-box button {
     width: 60%;
     height: 40px;
     border-radius: 20px;
 }
-.contact-box{
+
+.contact-box {
     height: 25vh;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
     background-color: #ffffff;
-   border: 1px solid #00000052;
-   overflow: hidden;
+    border: 1px solid #00000052;
+    overflow: hidden;
 }
+
+.action-box {
+    height: 48vh;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+

@@ -52,7 +52,8 @@ function Navbar() {
       <div className='navbar'>
       <div className="navrow">
         <div className="logo">
-          <img src={logo} alt="olx" />
+          <Link to='/'><img src={logo} alt="olx" /></Link>
+        
         </div>
         <div className="navlinks">
         <ul>

@@ -5,8 +5,8 @@ import { auth, userRef } from '../../firebase/config'
 import { onAuthStateChanged, sendEmailVerification, signOut } from 'firebase/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { getDocs } from 'firebase/firestore'
-import { confirmAlert } from 'react-confirm-alert'
-import 'react-confirm-alert/src/react-confirm-alert.css';
+
+
 function Profile() {
   const [username, SetUsername] = useState('')
   const [phone, setPhone] = useState('')
@@ -74,22 +74,15 @@ function Profile() {
   const confirmDelete = (e) => {
     e.preventDefault()
     try {
-        confirmAlert({
-          title: 'Confirm to Delete Account',
-          message: `${username} Are you sure to do this.`,
-          buttons: [
-            {
-              label: 'Yes',
-              onClick: () => alert('Click Yes')
-            },
-            {
-              label: 'No',
-              onClick: () => {
-                navigate('/')
-              }
-            }
-          ],
-        });
+      const confirmBox = window.confirm(
+        `${username} Are you sure want to delete your account?`
+      )
+      if (confirmBox === true) {
+       alert("clicked yes")
+       navigate('/')
+      }else{
+        navigate('/')
+      }
     } catch (error) {
       console.log(error);
     }
@@ -119,8 +112,6 @@ function Profile() {
               disabled />
           </div>
           <div className="profile-box-right">
-            {/* <Link to='/update-password' className='update-password'><button className='update-password' >Update password</button></Link> */}
-            {/* <button className='update-password'>Update Phone Number</button> */}
             {emailVerify ? <button className='update-password' onClick={verfiedEmailAlert}>Send Verification Mail</button> : <button className='update-password' onClick={verifyEmail}>Send Verification Mail</button>}
             <button className='update-password' onClick={logout}>Logout</button>
             <button className='update-password' onClick={confirmDelete}>Delete Account</button>

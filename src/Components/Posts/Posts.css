@@ -1,6 +1,7 @@
 .posts {
     background-color: transparent;
     padding: 20px;
+   
 }
 
 .post-box {
@@ -14,6 +15,7 @@
     border-radius: 20px;
     margin: 10px;
     max-height: 300px;
+    color: #000;
 }
 
 .post-box .fa-heart {
