@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/OLX/static/css/main.dab08457.css",
+    "main.js": "/OLX/static/js/main.07ca375f.js",
+    "static/media/Olx banner.png": "/OLX/static/media/Olx banner.fcbc2c826af86bc7c394.png",
+    "static/media/olx img.png": "/OLX/static/media/olx img.4eb74dcac6a4338390b6.png",
+    "static/media/profile.png": "/OLX/static/media/profile.6d8d681120f4d29b54a9.png",
+    "static/media/logo.png": "/OLX/static/media/logo.bd9d7e6ed60ff465e3c2.png",
+    "static/media/Download_on_the_App_Store_Badge.svg": "/OLX/static/media/Download_on_the_App_Store_Badge.15f01eefb2013206cc7e26d98fbe95fb.svg",
+    "index.html": "/OLX/index.html",
+    "main.dab08457.css.map": "/OLX/static/css/main.dab08457.css.map",
+    "main.07ca375f.js.map": "/OLX/static/js/main.07ca375f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dab08457.css",
+    "static/js/main.07ca375f.js"
+  ]
+}
