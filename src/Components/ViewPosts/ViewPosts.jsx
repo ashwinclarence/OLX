@@ -8,7 +8,6 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 function ViewPosts() {
-  const[reportCat,setReportCat]=useState('')
   const [eachProduct, setEachProduct] = useState([])
   const [productSeller, setProductSeller] = useState([])
   const [userStatus, setUserStatus] = useState(false)
@@ -65,12 +64,13 @@ function ViewPosts() {
   alert("reported")
  }
 
+
   return (
     <div className='view-post-container'>
       <div className="view-post-row">
         <div className="view-post-left">
           <div className="image-box">
-            <img src={eachProduct.productUrl} alt="" />
+          <img src={eachProduct.productUrl} alt="" />
           </div>
           <div className="description-box">
             <h3>Description</h3>
@@ -98,7 +98,7 @@ function ViewPosts() {
             <h4>Location</h4>
           </div>
           <div className="action-box">
-            <h5 onClick={report}>Report</h5>
+            <h5 onClick={report}>Report this add</h5>
           </div>
         </div>
       </div>

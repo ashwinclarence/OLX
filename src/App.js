@@ -20,6 +20,7 @@ function App() {
         <Route path='/update-password' element={<UpdatePasswordUser/>}></Route>
         <Route path='/sell-product' element={<ProductSell/>}></Route>
         <Route path='/view-product' element={<ProductView/>}></Route>
+        {/* <Route path='/view-rating' element={</>}></Route> */}
         </Routes>
       </Router>
     </div>

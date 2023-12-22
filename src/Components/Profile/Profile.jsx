@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Profile.css'
 import profileImage from "./profile.png"
 import { auth, userRef } from '../../firebase/config'
@@ -10,6 +10,7 @@ import { getDocs } from 'firebase/firestore'
 function Profile() {
   const [username, SetUsername] = useState('')
   const [phone, setPhone] = useState('')
+  const [location, setLocation] = useState('')
   const [email, setEmail] = useState('')
   const [emailVerify, setEmailVerify] = useState(false)
   const [userid, setUserid] = useState('')
@@ -36,6 +37,7 @@ function Profile() {
       if (userid === doc.data().Id) {
         setNavUserProfile(doc.data().ProfileImage)
         setPhone(doc.data().phoneNumber)
+        setLocation(doc.data().location)
       }
     })
   })
@@ -88,6 +90,12 @@ function Profile() {
     }
   }
 
+  //navigate to view rating
+  const viewMyProducts=()=>{
+    navigate('/view-my-products')
+  }
+
+
 
   return (
     <div className='profile'>
@@ -95,6 +103,7 @@ function Profile() {
         <form action="">
           <div className="profile-box-left">
             <img src={navUserProfile ? navUserProfile : profileImage} alt="" />
+            
             <label htmlFor="">Full Name</label>
             <input
               type="text"
@@ -105,6 +114,11 @@ function Profile() {
               type="tel"
               value={phone != null ? phone : "update Phone number"}
               disabled />
+            <label htmlFor="">location </label>
+            <input
+              type="text"
+              value={location != null ? location : "error loading email"}
+              disabled />
             <label htmlFor="">Email {emailVerify ? <i class="fa-solid fa-circle-check" title='verified email'></i> : <i class="fa-solid fa-circle-xmark" title='Email not verfied'></i>} </label>
             <input
               type="text"
@@ -112,6 +126,7 @@ function Profile() {
               disabled />
           </div>
           <div className="profile-box-right">
+           <button  className='update-password' onClick={viewMyProducts}>View My Products</button>
             {emailVerify ? <button className='update-password' onClick={verfiedEmailAlert}>Send Verification Mail</button> : <button className='update-password' onClick={verifyEmail}>Send Verification Mail</button>}
             <button className='update-password' onClick={logout}>Logout</button>
             <button className='update-password' onClick={confirmDelete}>Delete Account</button>
