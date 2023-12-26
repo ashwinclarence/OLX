@@ -1,0 +1,47 @@
+.my-product-container{
+    position: relative;
+    height: 100vh;
+    margin: 20px;
+}
+
+.left-profile-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    border: none;
+    outline: none;
+    background-color: rgb(209, 209, 209);
+}
+.left-profile-box img{
+    display: block;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+.left-profile-box h2{
+   display: flex;
+   justify-content: center;
+   padding: 10px;
+   
+}
+.left-profile-box h6{
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   justify-content: flex-start;
+   padding: 10px;
+   
+}
+
+.right-product-box{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70%;
+    border: none;
+    outline: none;
+}
+

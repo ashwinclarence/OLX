@@ -56,7 +56,7 @@
 .image-box img {
     width: 45vw;
     height: 70vh;
-    object-fit: cover;
+    object-fit: scale-down;
     background-color: #ffffff;
 
 }

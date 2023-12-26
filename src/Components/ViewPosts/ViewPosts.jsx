@@ -75,9 +75,11 @@ function ViewPosts() {
   const report = async (e) => {
     //  e.preventDefault()
     try {
-      let alreadyReport = true
-      if (eachProduct.reportedUserId !== '') {
-        eachProduct.reportedUserId.map((obj) => {
+      if(auth.currentUser.uid!==productSeller.Id){
+
+        let alreadyReport = true
+        if (eachProduct.reportedUserId !== '') {
+          eachProduct.reportedUserId.map((obj) => {
           console.log(obj);
           if (obj === auth.currentUser.uid) {
             alreadyReport = false
@@ -96,13 +98,16 @@ function ViewPosts() {
         alert("already reported")
       }
 
+    }else{
+      alert("this is your product")
+    }
     } catch (error) {
       console.log(error);
     }
   }
 
 
-
+  
 
   return (
     <div className='view-post-container'>
@@ -119,8 +124,6 @@ function ViewPosts() {
         <div className="view-post-right">
           <div className="price-box">
             <div className="price-box-row-one">
-
-
               <h2 ><i class="fa-solid fa-indian-rupee-sign"></i>{price}</h2>
               <h2><i class="fa-solid fa-heart"></i><i class="fa-solid fa-share-nodes"></i></h2>
             </div>

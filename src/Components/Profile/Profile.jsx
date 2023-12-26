@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Profile.css'
 import profileImage from "./profile.png"
 import { auth, userRef } from '../../firebase/config'

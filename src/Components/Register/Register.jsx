@@ -17,6 +17,7 @@ function Register() {
     const [password, Setpassword] = useState('')
     const [confirmPassword, SetConfirmPassword] = useState('')
     const [profileImage, setProfileImage] = useState('')
+    let date=new Date()
 
 
     // function to sign-in
@@ -63,7 +64,7 @@ function Register() {
                                 Id: auth.currentUser.uid,
                                 email: email,
                                 phoneNumber: phone,
-                                joinDate: Date.now(),
+                                joinDate: date.toDateString(),
                                 ProfileImage: url,
                                 reportCount: 0,
                                 location
