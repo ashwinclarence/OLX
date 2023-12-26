@@ -29,6 +29,7 @@ function Register() {
                     console.log("user created", cred.user);
                     console.log(cred.user.uid)
                     navigate('/')
+                    
                 })
                 await updateProfile(auth.currentUser, {
                     displayName: name

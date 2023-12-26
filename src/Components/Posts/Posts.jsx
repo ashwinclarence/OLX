@@ -57,11 +57,11 @@ function Posts() {
                 <ul>
                   <li className='product-price'>
                     <i className='fa-solid fa-indian-rupee-sign'></i>
-                    &nbsp;&nbsp;{product.productPrice}/-
+                    &nbsp;&nbsp;{product.productPrice.toLocaleString()}
                   </li>
                   <li className='product-name'>{product.productName}</li>
                   {product.productDescription.length > 70 ? <li className='product-description'>{product.productDescription.slice(0, 70)}...</li> : <li className='product-description'>{product.productDescription.slice(0, 70)}</li>}
-
+                 
                   <li className='product-uploaded-time'>{product.uploadedTime}</li>
                 </ul>
               </div>

@@ -16,8 +16,10 @@ function Profile() {
   const [userid, setUserid] = useState('')
   const [navUserProfile, setNavUserProfile] = useState('')
   const navigate = useNavigate()
+
   onAuthStateChanged(auth, (user) => {
     try {
+
       SetUsername(user.displayName)
       setEmail(user.email)
       setUserid(user.uid)

@@ -14,6 +14,7 @@ function SellProduct() {
   const [productDescription, setProductDescription] = useState('')
   const [location, setLocation] = useState('')
   const [productImage, setProductImage] = useState('')
+  let date=new Date()
   const addProduct = async (e) => {
     e.preventDefault()
     // function to add profile image to firestorage
@@ -31,18 +32,21 @@ function SellProduct() {
                 productUrl: "url",
                 location:"locatioan",
                 reportnum:0,
+                reportedUserId:['hello','hi','hei']
             }
               // function to add user details to firestore
               addDoc(itemRef, {
                 productName,
-                productPrice:productPrice,
+                productPrice:Number(productPrice),
                 productCategory,
                 productDescription,
                 uploadedUserId: auth.currentUser.uid,
-                uploadedTime: Date.now(),
+                uploadedTime: date.toDateString(),
+                uploadedTimeMillsecond: Date.now(),
                 productUrl: url,
                 location,
                 reportnum:0,
+                reportedUserId:''
               },docData).then(() => {
                 setProductName("")
                 setProductPrice("")

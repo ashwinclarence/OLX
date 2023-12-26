@@ -152,7 +152,13 @@
     border: 1px solid #00000052;
     overflow: hidden;
 }
-
+.contact-box h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+   text-transform: uppercase;
+}
 .action-box {
     height: 48vh;
     padding: 20px;

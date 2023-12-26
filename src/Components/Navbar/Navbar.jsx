@@ -88,6 +88,7 @@ function Navbar() {
               <p >{userStatus?username:"User"}</p>
                 
                 <p>{userStatus?<Link to='/profile' className='view-profile-nav'> <p >View Profile</p></Link>:""}</p>
+                 <p>{userStatus?<p onClick={logout}>Add Acoount</p>:""}</p>
                  <p>{userStatus?<p onClick={logout}>Logout</p>: <Link to='/login' className='view-profile-nav'> <p >Login</p></Link> }</p>
                 </div>
               </div>
