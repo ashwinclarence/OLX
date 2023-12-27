@@ -1,17 +1,21 @@
 .my-product-container{
     position: relative;
-    height: 100vh;
+    height: 150vh;
     margin: 20px;
+    overflow: hidden;
 }
 
 .left-profile-box{
     position: absolute;
     top: 0;
     left: 0;
-    width: 30%;
+    width: 20%;
     border: none;
     outline: none;
-    background-color: rgb(209, 209, 209);
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    border-radius: 20px;
+  
 }
 .left-profile-box img{
     display: block;
@@ -25,22 +29,34 @@
    display: flex;
    justify-content: center;
    padding: 10px;
-   
+ 
 }
 .left-profile-box h6{
-   display: flex;
-   flex-direction: row;
-   gap: 10px;
-   justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-start;
+    padding: 10px;
+    
+}
+.left-profile-box button{
    padding: 10px;
-   
+   width: 100%;   
+   border-radius: 10px;
+   font-size: 20px;
+   font-weight: 700;
+   background-color: #012f35;
+   color: #fff;
+   border: none;
+   outline: none;
+   margin-top: 20px;
 }
 
 .right-product-box{
     position: absolute;
     top: 0;
     right: 0;
-    width: 70%;
+    width: 80%;
     border: none;
     outline: none;
 }

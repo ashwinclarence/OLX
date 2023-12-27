@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 
 function Posts() {
   const [products, setProducts] = useState([]);
-
+  const [category, setCategory] = useState('all');
+console.log(category);
 
   useEffect(() => {
     try {
@@ -17,7 +18,14 @@ function Posts() {
             ...doc.data(),
             id: doc.id
           }
+        }).filter((result)=>{
+          if(category!=='all'){
+           return result.productCategory===category;            
+          }else{
+            return result
+          }
         })
+      
         setProducts(allproducts)
       })
     } catch (error) {
@@ -26,24 +34,24 @@ function Posts() {
 
 
 
-  }, []);
+  }, [category]);
 
 
   return (
 
     <div className='posts'>
         <div className="filter-row">
-          <p value='all'>All Category</p>
-          <p value="Car">Car</p>
-          <p value="Mobile">Mobile</p>
-          <p value="Bikes">Bikes</p>
-          <p value="Books">Books</p>
-          <p value="Sports">Sports</p>
-          <p value="vehicles">vehicles</p>
-          <p value="Furniture">Furniture</p>
-          <p value="Electronics">Electronics</p>
-          <p value="Home Appliances">Home Appliances</p>
-          <p value="Food Items">Food Items</p>
+          <p value='all' onClick={(e)=>setCategory('all')}>All Category</p>
+          <p value="Car" onClick={(e)=>setCategory('Car')}>Car</p>
+          <p value="Mobile" onClick={(e)=>setCategory('Mobile')}>Mobile</p>
+          <p value="Bikes" onClick={(e)=>setCategory('Bikes')}>Bikes</p>
+          <p value="Books" onClick={(e)=>setCategory('Books')}>Books</p>
+          <p value="Sports" onClick={(e)=>setCategory('Sports')}>Sports</p>
+          <p value="vehicles" onClick={(e)=>setCategory('vehicles')}>vehicles</p>
+          <p value="Furniture" onClick={(e)=>setCategory('Furniture')}>Furniture</p>
+          <p value="Electronics" onClick={(e)=>setCategory('Electronics')}>Electronics</p>
+          <p value="Home Appliances" onClick={(e)=>setCategory('Home Appliances')}>Home Appliances</p>
+          <p value="Food Items" onClick={(e)=>setCategory('Food Items')}>Food Items</p>
         </div> 
       <div className="post-product-container">
         {products.map((product) => (
@@ -59,7 +67,7 @@ function Posts() {
                     <i className='fa-solid fa-indian-rupee-sign'></i>
                     &nbsp;&nbsp;{product.productPrice.toLocaleString()}
                   </li>
-                  <li className='product-name'>{product.productName}</li>
+                  {product.productName.length>25? <li className='product-name'>{product.productName.slice(0,25)}...</li>:<li className='product-name'>{product.productName.slice(0,25)}</li>}
                   {product.productDescription.length > 70 ? <li className='product-description'>{product.productDescription.slice(0, 70)}...</li> : <li className='product-description'>{product.productDescription.slice(0, 70)}</li>}
                  
                   <li className='product-uploaded-time'>{product.uploadedTime}</li>

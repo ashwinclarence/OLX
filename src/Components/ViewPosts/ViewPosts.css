@@ -9,7 +9,7 @@
 .view-post-row {
     position: relative;
     width: 95%;
-    height: 110vh;
+    height: 130vh;
     margin: auto;
     outline: none;
     border: none;
@@ -43,21 +43,21 @@
     height: 70vh;
     padding: 10px;
     border-radius: 10px;
-    background-color: #000000;
+    background-color: #000000; 
     border: 1px solid #00000052;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-
-
+   
 }
 
 .image-box img {
     width: 45vw;
     height: 70vh;
-    object-fit: scale-down;
-    background-color: #ffffff;
+    object-fit: contain;
+    background-color: #000000;
+    z-index: 2;
 
 }
 
@@ -152,20 +152,67 @@
     border: 1px solid #00000052;
     overflow: hidden;
 }
-.contact-box h1{
+
+.contact-box h1 {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80%;
-   text-transform: uppercase;
+    text-transform: uppercase;
 }
-.action-box {
-    height: 48vh;
-    padding: 20px;
-    overflow: hidden;
+
+.action-box-mini {
     display: flex;
     justify-content: flex-end;
 }
 
+.action-box {
+    visibility: hidden;
+    height: 40vh;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #00000052;
+}
 
+.action-box div {
+    margin-top: 10px;
+}
 
+.action-box button {
+    width: 120px;
+    border: none;
+    outline: none;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #012f35;
+    color: #ffffff;
+    scale: 1.2;
+}
+
+.action-box textarea {
+    display: block;
+    margin: auto;
+    width: 400px;
+    height: 150px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding-left: 1rem;
+    resize: none;
+    padding: 10px;
+    text-align: justify;
+    line-height: 20px;
+}
+
+.action-box textarea::placeholder {
+    padding: 10px;
+}
+
+.filter-row{
+    cursor: pointer;
+}

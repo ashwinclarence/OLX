@@ -9,10 +9,11 @@ import ProductSell from '../src/Pages/ProductSell'
 import ProductView from '../src/Pages/ProductView'
 import SellerProductView from './Pages/SellerProductView'
 
+
 function App() {
   return (
     <div>
-      <Router>
+      <Router>    
         <Routes>
         <Route exact path='/' element={<Home />} ></Route>
         <Route path='/signup' element={<Signup/>}></Route>
